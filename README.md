@@ -48,3 +48,4 @@ By making notes ahead of time, you will practice the core skill of being able to
 
 > View the [Frontend README](./frontend/README.md) for more details.
 # trivia
+# trivia
