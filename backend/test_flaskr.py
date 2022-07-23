@@ -116,14 +116,14 @@ class TriviaTestCase(unittest.TestCase):
 
     def test_search_question(self):
         """test  question search"""
-        res = self.client().post('/questions', json={'search_term': ''})
+        res = self.client().post('/questions', json={'search_term': 'a'})
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
 
     def test_404_search_question(self):
         """test  question search"""
-        res = self.client().post('/questions', json={'search_term': ''})
+        res = self.client().post('/questions', json={'search_term': 'gigvkjhgd'})
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 404)
         self.assertEqual(data['success'], False)
@@ -156,9 +156,9 @@ class TriviaTestCase(unittest.TestCase):
 
     def test_available_question(self):
         """test quiz questions"""
-        data = json.loads(res.data)
         res = self.client().post('/quiz/question',
                                  json={'category': 0, 'previous_questions': []})
+        data = json.loads(res.data)
         self.assertEqual(res.status_code, 404)
         self.assertEqual(data['success'], False)
         self.assertEqual(data['message'], 'resource not found')
